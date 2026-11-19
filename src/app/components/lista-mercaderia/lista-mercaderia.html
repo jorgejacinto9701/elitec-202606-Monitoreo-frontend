@@ -1,0 +1,35 @@
+<section class="catalogo">
+  <div class="cabecera">
+    <h1>Catálogo de Productos</h1>
+
+    @if (lstMercaderia | async; as aux) {
+      <span class="contador"> {{ aux.length }} mercaderías disponibles </span>
+    }
+  </div>
+
+  @if (lstMercaderia | async; as aux) {
+    <div class="contenedor">
+      @for (producto of aux; track producto.id) {
+        <article class="card">
+          <div class="imagen">
+            <img [src]="producto.image" [alt]="producto.title" />
+          </div>
+
+          <div class="contenido">
+            <h3>
+              {{ producto.title }}
+            </h3>
+
+            <p class="precio">$ {{ producto.price }}</p>
+
+            <a class="btn-detalle" [routerLink]="['/detalleMercaderia', producto.id]">
+              Ver detalle
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  } @else {
+    <div class="loading">Cargando productos...</div>
+  }
+</section>

@@ -1,0 +1,44 @@
+<div class="container">
+   <mat-toolbar color="primary">
+        <span role="heading">Lista Productos</span>
+   </mat-toolbar>
+
+   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+
+    <!-- Columna ID -->
+    <ng-container matColumnDef="idProducto">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.idProducto }} </td>
+    </ng-container>
+
+    <!-- Columna Nombre -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.nombre }} </td>
+    </ng-container>
+
+    <!-- Columna Precio -->
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef> Precio </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.precio }} </td>
+    </ng-container>
+
+    <!-- Columna Stock -->
+    <ng-container matColumnDef="stock">
+      <th mat-header-cell *matHeaderCellDef> Stock </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.stock }} </td>
+    </ng-container>
+
+    <!-- Columna Descripción -->
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripción </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.categoria.descripcion }} </td>
+    </ng-container>
+
+    
+    <!-- Filas de Cabecera y Datos -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>

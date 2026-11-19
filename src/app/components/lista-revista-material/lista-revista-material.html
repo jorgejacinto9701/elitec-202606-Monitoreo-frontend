@@ -1,0 +1,48 @@
+<div class="container">
+   <mat-toolbar color="primary">
+        <span role="heading">Lista Revista</span>
+   </mat-toolbar>
+
+   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+
+    <!-- Columna ID -->
+    <ng-container matColumnDef="idRevista">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let revista"> {{ revista.idRevista }} </td>
+    </ng-container>
+
+    <!-- Columna Nombre -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let revista"> {{ revista.nombre }} </td>
+    </ng-container>
+
+    <!-- Columna País -->
+    <ng-container matColumnDef="pais">
+      <th mat-header-cell *matHeaderCellDef> País </th>
+      <td mat-cell *matCellDef="let revista"> {{ revista.pais.nombre }} </td>
+    </ng-container>
+
+    <!-- Columna Tipo de Revista -->
+    <ng-container matColumnDef="tipoRevista">
+      <th mat-header-cell *matHeaderCellDef> Tipo de Revista </th>
+      <td mat-cell *matCellDef="let revista"> {{ revista.tipoRevista.descripcion }} </td>
+    </ng-container>
+
+    <!-- Columna Estado -->
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let revista"> {{ revista.estado == 1 ?"Activo": "Inactivo"}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fechacreacion">
+      <th mat-header-cell *matHeaderCellDef> Fecha Creación </th>
+      <td mat-cell *matCellDef="let revista"> {{ revista.fechaCreacion}} </td>
+    </ng-container>
+    
+    <!-- Filas de Cabecera y Datos -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>

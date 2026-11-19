@@ -1,0 +1,50 @@
+
+<div class="contenedor">
+  @if(mercaderiaAux | async; as mercaderia){
+  <div class="detalle-card">
+    <div class="imagen-container">
+      <img [src]="mercaderia.image" [alt]="mercaderia.title">
+    </div>
+    <div class="info">
+      <h1>{{ mercaderia.title }}</h1>
+      <div class="precio">
+        $ {{ mercaderia.price }}
+      </div>
+      <div class="datos">
+        <div class="dato">
+          <span>Categoría</span>
+          <strong>{{ mercaderia.category }}</strong>
+        </div>
+        <div class="dato">
+          <span>Rating</span>
+          <strong>
+            ⭐ {{ mercaderia.rating?.rate }}
+          </strong>
+        </div>
+        <div class="dato">
+          <span>Reviews</span>
+          <strong>
+            {{ mercaderia.rating?.count }}
+          </strong>
+        </div>
+      </div>
+      <div class="descripcion">
+        <h3>Descripción</h3>
+        <p>
+          {{ mercaderia.description }}
+        </p>
+      </div>
+      <button class="btn-regresar" (click)="volver()">
+        ← Regresar
+      </button>
+    </div>
+ </div>
+  }
+  @else {
+  <div class="loading">
+    <div class="spinner"></div>
+    <p>Cargando mercadería...</p>
+  </div>
+  }
+
+</div>
