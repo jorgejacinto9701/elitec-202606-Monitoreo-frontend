@@ -1,0 +1,58 @@
+<div class="container">
+  
+    <mat-toolbar color="primary">
+        <span style="display: flex; align-items: center; gap: 10px;">
+            Registro de Autor
+        </span>
+    </mat-toolbar>
+
+      <form [formGroup]="forms"  class="form-grid"  autocomplete="off"  
+                    (ngSubmit)="registrar()" style="margin-top: 20px;">
+        
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombres" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="apellidos" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha de Nacimiento</mat-label>
+            <input matInput type="date" formControlName="fechaNacimiento"  />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Teléfono</mat-label>
+            <input matInput formControlName="telefono" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>País</mat-label>
+            <mat-select formControlName="pais" >
+                <mat-option *ngFor="let op of lstPaises" [value]="op.idPais">
+                    {{ op.nombre }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+                <mat-form-field appearance="fill">
+            <mat-label>Grado</mat-label>
+            <mat-select formControlName="grado">
+                <mat-option *ngFor="let op of lstGrados" [value]="op.idDataCatalogo">
+                    {{ op.descripcion }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+          <div class="grid-full form-actions">
+                <button mat-raised-button color="primary" type="submit">
+                    <mat-icon>save</mat-icon>
+                    <span>Registrar Autor</span>
+                </button>
+          </div>
+      </form>
+</div>
